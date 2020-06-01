@@ -1,8 +1,8 @@
 // replace with your own token
-var token = '9dfa7a1f2dfa1c97550e55469bca9a68dcc7e03c'
+var token = '5663ee3a12bc030a3a58504a43432d5f5eb36666'
 
 var invocation = new XMLHttpRequest();
-var url = 'https://seacloud.cc/api2/repos/';
+var url = 'https://cloud.iitmandi.ac.in/api2/repos/';
 function listLibraries() {
     if(invocation) {    
         invocation.open('GET', url, true);

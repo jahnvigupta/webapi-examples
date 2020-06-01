@@ -1,5 +1,5 @@
 var invocation = new XMLHttpRequest();
-var url = 'https://seacloud.cc/api2/auth-token/';
+var url = 'https://cloud.iitmandi.ac.in/api2/auth-token/';
 function getSeafileApiToken() {
     if(invocation) {    
         invocation.open('POST', url, true);
