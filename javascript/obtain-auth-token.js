@@ -10,7 +10,7 @@ function getSeafileApiToken() {
             }
         };
 
-        invocation.send("username=demo@seafile.com&password=demo");
+        invocation.send('username=b18060@students.iitmandi.ac.in&password=');
     }
 }
 
