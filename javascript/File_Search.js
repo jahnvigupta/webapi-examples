@@ -1,7 +1,7 @@
 //author: Jahnvi
 //Date: 29-05-20
 
-var token = prompt("Please enter your token (Token can be obtained by running command "curl -d 'username=username@example.com&password=123456' https://cloud.iitmandi.ac.in/api2/auth-token/""); // Taking token as input
+var token = prompt("Please enter your token (Token can be obtained by running command \"curl -d 'username=username@example.com&password=123456' https://cloud.iitmandi.ac.in/api2/auth-token/\""); // Taking token as input
 var repo_id = prompt("Please enter your repo_id in which you want to make a search (You can find your repos listed on https://cloud.iitmandi.ac.in/api2/repos/)"); // Taking repo_id as input
 var search_file = prompt("Please enter File_name that you want ti search"); // Taking File_name as input
 
@@ -20,12 +20,10 @@ function dir_info(url, depth, url_print , search_file) {
                 for (var i=0 ; i < results.length ; i++)
                 { 
                     if(results[i]["name"] === search_file){
-                        console.log(url_print); //??????????????//prints files and directories inside the directory
+                        console.log(url_print); //Prints URL of found File
+                    if(results[i]["type"] === "dir"){
+                        dir_info(url + '/' + results[i]["name"], depth+1,url_print+results[i]["name"]+'/', search_file) //Looks the file in the inside directories
                     }
-                        //console.log(" ".repeat(2*depth)+results[i]["name"]+' : '+results[i]["type"]); //Prints files inside Directory
-                        if(results[i]["type"] === "dir"){
-                            dir_info(url + '/' + results[i]["name"], depth+1,url_print+results[i]["name"]+'/', search_file)
-                        }
                 }
             }
         };
@@ -47,13 +45,11 @@ function repo_info(id, search_file) {
                 //iterate through all the repos
                 for (var i=0 ; i < results.length ; i++)
                 { 
-                        //????????????console.log(results[i]["name"]+' : '+results[i]["type"]); //Prints Repo Id and type of Repo
-                        //url_print = url_print+results[i]["name"]+'/';
                         if(results[i]["name"] === search_file){
-                            console.log(url_print+results[i]["name"]+'/'); //??????????????//prints files and directories inside the directory
+                            console.log(url_print); //Prints URL of found File
                         }
                         if(results[i]["type"] === "dir"){
-                            dir_info(url + '?repo_id&p=/' + results[i]["name"],1, url_print+results[i]["name"]+'/', search_file) //????????????//prints files and directories inside the directory
+                            dir_info(url + '?repo_id&p=/' + results[i]["name"],1, url_print+results[i]["name"]+'/', search_file) //Looks the file in the inside directories
                         }
                 }
             }
